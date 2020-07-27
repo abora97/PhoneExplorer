@@ -1,4 +1,4 @@
-# !PhoneExplorer
+# PhoneExplorer
 
 ## Description
 

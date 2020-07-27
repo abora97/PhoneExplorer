@@ -3,7 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.main.MainActivity">
+    tools:context=".ui.activity.splash.SplashActivity">
+
+  <ImageView
+      android:id="@+id/ivSplash"
+      android:layout_width="match_parent"
+      android:src="@drawable/splash_img"
+      android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,10 @@
-package com.abora.phoneexplorer;
+package com.abora.phoneexplorer.ui.activity.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.abora.phoneexplorer.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -3,4 +3,16 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#C73D4C</color>
+    <color name="gray">#565252</color>
+    <color name="black">#000000</color>
+    <color name="whiteGray">#eeeeee</color>
+    <color name="darkGray">#A7A5A5</color>
+    <color name="green">#7FB647</color>
+    <color name="blue">#28336D</color>
+    <color name="line">#CDCDCD</color>
+    <color name="btnLight">#B0B0B0</color>
+    <color name="yellow">#F3CF12</color>
 </resources>
