@@ -1,10 +1,4 @@
-# ![Popular Movies](https://raw.githubusercontent.com/fjoglar/popular-movies-app/master/app/src/main/res/mipmap-mdpi/ic_launcher_round.png) Popular Movies App
-
-
-[![mahmoud twitter](https://img.shields.io/badge/twitter-@Mahmod_Elebiary-blue.svg)](https://twitter.com/Mahmod_Elebiary)
-[![Platform Android](https://img.shields.io/badge/platform-Android-blue.svg)](https://www.android.com)
-
-
+# !PhoneExplorer
 
 ## Description
 
@@ -22,4 +16,7 @@ this app task from YourParts to explore Samsung devises details
 * [Picasso](https://github.com/square/picasso)
 * [Butterknife](https://github.com/JakeWharton/butterknife)
 
-
+### Contact
+- [Twitter](https://twitter.com/Mahmod_Elebiary)
+- [Facebook](https://www.facebook.com/MahmoudElebiary97)
+- [LinkedIn](https://www.linkedin.com/in/mahmoud-elebiary-19a536128/)
