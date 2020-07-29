@@ -7,7 +7,8 @@ public interface Constants {
     String TOKEN = "token";
     String KEY = "5a437bd80ea753b2706facbebe872d1fb800218bee8903f1";
     String BRAND = "brand";
-    String SAMSUNG="Samsung";
+    String SAMSUNG = "Samsung";
     String LIMIT = "limit";
-
+    String DETAILS_DATA = "detailsData";
+    String MyPREFERENCES="MyPREFERENCES";
 }

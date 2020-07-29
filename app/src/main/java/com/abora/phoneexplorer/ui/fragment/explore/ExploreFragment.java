@@ -1,5 +1,7 @@
 package com.abora.phoneexplorer.ui.fragment.explore;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abora.phoneexplorer.R;
 import com.abora.phoneexplorer.model.PhoneResponse;
+import com.abora.phoneexplorer.util.Constants;
 
 import java.util.List;
 
@@ -22,7 +25,7 @@ import butterknife.ButterKnife;
 
 public class ExploreFragment extends Fragment {
     private static final String TAG = "ExploreFragment";
-
+    int phoneLimit;
     @BindView(R.id.recPhone)
     RecyclerView recPhone;
     @BindView(R.id.progressPhone)
@@ -42,7 +45,11 @@ public class ExploreFragment extends Fragment {
     }
 
     private void init() {
-        exploreViewModel.getPhones();
+
+        SharedPreferences sharedpreferences = getContext().getSharedPreferences(Constants.MyPREFERENCES, Context.MODE_PRIVATE);
+        phoneLimit = sharedpreferences.getInt(Constants.LIMIT, 10);
+        exploreViewModel.getPhones(phoneLimit);
+
         exploreViewModel.phoneResponseMutableLiveData.observe(getActivity(), new Observer<List<PhoneResponse>>() {
             @Override
             public void onChanged(List<PhoneResponse> phoneResponses) {

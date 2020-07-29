@@ -21,9 +21,9 @@ public class ExploreViewModel extends ViewModel {
     MutableLiveData<List<PhoneResponse>> phoneResponseMutableLiveData = new MutableLiveData<>();
     private static final String TAG = "MainViewModel";
 
-     void getPhones() {
+     void getPhones(int limit) {
         final APIInterface apiService = ApiClient.getClient().create(APIInterface.class);
-         Call<List<PhoneResponse>> call = apiService.getPhone(Constants.KEY, Constants.SAMSUNG);
+         Call<List<PhoneResponse>> call = apiService.getPhone(Constants.KEY, Constants.SAMSUNG,limit);
          call.enqueue(new Callback<List<PhoneResponse>>() {
             @Override
             public void onResponse(Call<List<PhoneResponse>> call, Response<List<PhoneResponse>> response) {
