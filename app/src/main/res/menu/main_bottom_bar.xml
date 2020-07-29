@@ -3,10 +3,10 @@
     <item android:id="@+id/navHome"
         android:icon="@drawable/ic_compass"
         android:title="Explore"/>
-    <item android:id="@+id/navFavorite"
+    <item android:id="@+id/navCompare"
         android:icon="@drawable/ic_compare"
         android:title="Compare"/>
-    <item android:id="@+id/navSearch"
+    <item android:id="@+id/navSettings"
         android:icon="@drawable/ic_settings"
         android:title="Settings"/>
 
