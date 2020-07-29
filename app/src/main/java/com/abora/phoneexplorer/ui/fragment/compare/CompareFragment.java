@@ -77,6 +77,7 @@ public class CompareFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getDevices(String deviceName) {
+        progressPhone.setVisibility(View.VISIBLE);
         compareViewModel.getPhones(deviceName);
         compareViewModel.phoneResponseMutableLiveData.observe(getActivity(), new Observer<List<PhoneResponse>>() {
             @Override
