@@ -1,66 +1,89 @@
 package com.abora.phoneexplorer.ui.fragment.compare;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.abora.phoneexplorer.R;
+import com.abora.phoneexplorer.model.PhoneResponse;
+import com.abora.phoneexplorer.ui.fragment.explore.PhoneAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CompareFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class CompareFragment extends Fragment {
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public CompareFragment() {
-        // Required empty public constructor
+public class CompareFragment extends Fragment implements View.OnClickListener {
+
+
+    @BindView(R.id.recPhone)
+    RecyclerView recPhone;
+    @BindView(R.id.progressPhone)
+    ProgressBar progressPhone;
+    @BindView(R.id.editSearch)
+    EditText editSearch;
+    @BindView(R.id.ivSearch)
+    ImageView ivSearch;
+    private RecyclerView.LayoutManager layoutManager;
+    private PhoneAdapter phoneAdapter;
+    CompareViewModel compareViewModel;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_compare, container, false);
+        ButterKnife.bind(this, view);
+        compareViewModel = ViewModelProviders.of(this).get(CompareViewModel.class);
+        ivSearch.setOnClickListener(this);
+        initRecycle();
+        return view;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CompareFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CompareFragment newInstance(String param1, String param2) {
-        CompareFragment fragment = new CompareFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    private void initRecycle() {
+        phoneAdapter = new PhoneAdapter(getActivity(), true);
+        recPhone.setLayoutManager(getLayoutManager());
+        recPhone.setAdapter(phoneAdapter);
+
+    }
+
+    private RecyclerView.LayoutManager getLayoutManager() {
+        if (layoutManager == null) {
+            layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        }
+        return layoutManager;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onClick(View v) {
+        String deviceName = editSearch.getText().toString();
+
+        if (deviceName.equals(null) || deviceName.equals("")) {
+            Toast.makeText(getContext(), "Please Enter Device Name", Toast.LENGTH_SHORT).show();
+        } else {
+            getDevices(deviceName);
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_compare, container, false);
+    private void getDevices(String deviceName) {
+        compareViewModel.getPhones(deviceName);
+        compareViewModel.phoneResponseMutableLiveData.observe(getActivity(), new Observer<List<PhoneResponse>>() {
+            @Override
+            public void onChanged(List<PhoneResponse> phoneResponses) {
+                progressPhone.setVisibility(View.GONE);
+                phoneAdapter.setList(phoneResponses);
+            }
+        });
     }
 }

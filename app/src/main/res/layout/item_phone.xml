@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardPhone"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@color/white"
-    android:id="@+id/cardPhone"
     app:cardCornerRadius="10dp">
 
-    <TextView
-        android:id="@+id/tvPhoneName"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_margin="@dimen/_10sdp"
-        android:gravity="center|start"
-        android:maxLines="1"
-        android:text="Phone Name"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvPhoneName"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:gravity="center|start"
+            android:maxLines="1"
+            android:text="Phone Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18sdp" />
+
+        <CheckBox
+            android:visibility="gone"
+            android:id="@+id/checkbox"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>

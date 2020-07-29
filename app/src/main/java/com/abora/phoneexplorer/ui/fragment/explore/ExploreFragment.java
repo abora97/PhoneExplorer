@@ -61,14 +61,13 @@ public class ExploreFragment extends Fragment {
     }
 
     private void initRecycle() {
-        phoneAdapter = new PhoneAdapter(getActivity());
+        phoneAdapter = new PhoneAdapter(getActivity(),false);
         recPhone.setLayoutManager(getLayoutManager());
         recPhone.setAdapter(phoneAdapter);
     }
 
     private RecyclerView.LayoutManager getLayoutManager() {
         if (layoutManager == null) {
-            //   layoutManager = new LinearLayoutManager(getActivity());
             layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         }
         return layoutManager;
