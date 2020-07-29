@@ -17,7 +17,11 @@ public interface APIInterface {
     //https://fonoapi.freshpixl.com/v1/getlatest?token=5a437bd80ea753b2706facbebe872d1fb800218bee8903f1&brand=Samsung&limit=1
 
     @GET(Constants.GET_LATEST)
-    Call<List<PhoneResponse>> getPhone(@Query(Constants.TOKEN) String apiKey, @Query(Constants.BRAND) String brand,@Query(Constants.LIMIT)int limit);
+    Call<List<PhoneResponse>> getPhone(@Query(Constants.TOKEN) String apiKey, @Query(Constants.BRAND) String brand, @Query(Constants.LIMIT) int limit);
 
+
+    //https://fonoapi.freshpixl.com/v1/getdevice?token=5a437bd80ea753b2706facbebe872d1fb800218bee8903f1&brand=Samsung&device=a70
+    @GET(Constants.GET_DEVICE)
+    Call<List<PhoneResponse>> searchPhone(@Query(Constants.TOKEN) String apiKey, @Query(Constants.BRAND) String brand, @Query(Constants.DEVICE) String device);
 
 }
