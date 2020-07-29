@@ -1,62 +1,44 @@
 package com.abora.phoneexplorer.ui.activity.main;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.abora.phoneexplorer.R;
 import com.abora.phoneexplorer.model.PhoneResponse;
-import com.abora.phoneexplorer.network.APIInterface;
-import com.abora.phoneexplorer.network.ApiClient;
 import com.abora.phoneexplorer.ui.fragment.compare.CompareFragment;
 import com.abora.phoneexplorer.ui.fragment.explore.ExploreFragment;
 import com.abora.phoneexplorer.ui.fragment.settings.SettingsFragment;
-import com.abora.phoneexplorer.util.Constants;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView navView;
-    MainViewModel mainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        ButterKnife.bind(this);
         navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(this);
-        init();
-
-    }
-
-    private void init() {
         openFragment(new ExploreFragment(), "home");
-        mainViewModel.getPhones();
-
-        mainViewModel.phoneResponseMutableLiveData.observe(this, new Observer<List<PhoneResponse>>() {
-            @Override
-            public void onChanged(List<PhoneResponse> phoneResponses) {
-                Toast.makeText(MainActivity.this, "" + phoneResponses.get(0).getDeviceName(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
 
@@ -65,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         switch (item.getItemId()) {
             case R.id.navHome:
-                openFragment(new ExploreFragment(), "ExploreFragment");
+                openFragment(new ExploreFragment(), "home");
                 break;
             case R.id.navCompare:
                 openFragment(new CompareFragment(), "CompareFragment");
@@ -85,7 +67,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         List<Fragment> fragments = fragmentManager.getFragments();
         Log.e("Fragments Quantity", String.valueOf(fragments.size()));
+       // removeFragments(fragments);
         fragmentManager.beginTransaction().show(fragment).commit();
+
     }
+
 
 }
