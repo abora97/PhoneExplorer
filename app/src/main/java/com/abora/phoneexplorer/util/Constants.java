@@ -13,4 +13,8 @@ public interface Constants {
     String DEVICE="device";
     String DETAILS_DATA = "detailsData";
     String MyPREFERENCES="MyPREFERENCES";
+    String COMPARE_PREFERENCES="comparePreferences";
+    String DEVICE1="device1";
+    String DEVICE2="device2";
+
 }

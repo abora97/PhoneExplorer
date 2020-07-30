@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,12 +36,19 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
     boolean isCompare;
     int checkCount;
 
-    private PhoneAdapter.onItemsSelected onItemsSelected;
+    private onItemsSelected onItemsSelected;
 
     public PhoneAdapter(Context context, boolean isCompare) {
         list = new ArrayList<>();
         this.context = context;
         this.isCompare = isCompare;
+    }
+
+    public PhoneAdapter(Context context, boolean isCompare,onItemsSelected onItemsSelected) {
+        list = new ArrayList<>();
+        this.context = context;
+        this.isCompare = isCompare;
+        this.onItemsSelected=onItemsSelected;
     }
 
 
@@ -55,20 +63,15 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PhoneResponse mlist = list.get(position);
-        if (isCompare)
-            holder.checkbox.setVisibility(View.VISIBLE);
 
-        holder.checkbox.setOnClickListener(new View.OnClickListener() {
+        if (isCompare)
+            holder.ivAddToCompare.setVisibility(View.VISIBLE);
+
+        holder.ivAddToCompare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.checkbox.isChecked()) {
-                    checkCount++;
-                } else {
-                    checkCount--;
-                }
-                if (checkCount == 2) {
-                    onItemsSelected.onItemChecked();
-                }
+                onItemsSelected.onItemChecked(mlist);
+
             }
         });
 
@@ -105,8 +108,8 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
         TextView tvPhoneName;
         @BindView(R.id.cardPhone)
         CardView cardPhone;
-        @BindView(R.id.checkbox)
-        CheckBox checkbox;
+        @BindView(R.id.ivAddToCompare)
+        ImageView ivAddToCompare;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -114,7 +117,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
         }
     }
 
-    interface onItemsSelected {
-        void onItemChecked();
+    public interface onItemsSelected {
+        void onItemChecked(PhoneResponse phoneResponse);
     }
 }
