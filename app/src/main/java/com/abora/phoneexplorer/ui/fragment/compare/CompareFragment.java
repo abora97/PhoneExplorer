@@ -2,6 +2,7 @@ package com.abora.phoneexplorer.ui.fragment.compare;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abora.phoneexplorer.R;
 import com.abora.phoneexplorer.model.PhoneResponse;
+import com.abora.phoneexplorer.ui.activity.compare.CompareActivity;
 import com.abora.phoneexplorer.ui.fragment.explore.PhoneAdapter;
 import com.abora.phoneexplorer.util.Constants;
 import com.google.gson.Gson;
@@ -139,7 +141,7 @@ public class CompareFragment extends Fragment implements View.OnClickListener, P
         });
 
         btnOk.setOnClickListener(v -> {
-
+            startActivity(new Intent(getContext(), CompareActivity.class));
         });
         dialog.show();
     }
