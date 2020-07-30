@@ -18,6 +18,37 @@
         app:cardCornerRadius="10dp">
 
         <EditText
+            android:id="@+id/edLoadNum"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_margin="@dimen/_2sdp"
+            android:background="@color/white"
+            android:hint="Enter Number of Loaded Devices with scrolling"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnLoadSave"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="Save"
+        android:textSize="14sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/white"
+        app:cardCornerRadius="10dp">
+
+        <EditText
             android:id="@+id/edMaxNum"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
@@ -38,4 +69,5 @@
         android:layout_marginTop="@dimen/_8sdp"
         android:text="Save"
         android:textSize="14sp" />
+
 </LinearLayout>

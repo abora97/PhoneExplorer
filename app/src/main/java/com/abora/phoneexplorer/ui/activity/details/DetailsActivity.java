@@ -33,7 +33,7 @@ public class DetailsActivity extends AppCompatActivity {
         binding.tvPhoneGpu.setText(phoneResponse.getGpu());
         binding.tvPhoneCpu.setText(phoneResponse.getCpu());
         binding.tvPhoneAnnounced.setText(phoneResponse.getAnnounced());
-        binding.tvPhoneBrand.setText(phoneResponse.getBrand());
+        binding.tvPhoneBrand.setText(phoneResponse.getColors());
         binding.tvPhoneBattery.setText(phoneResponse.getBatteryC());
         binding.tvPhoneStatus.setText(phoneResponse.getStatus());
         binding.tvPhoneTech.setText(phoneResponse.getTechnology());

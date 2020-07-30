@@ -10,6 +10,7 @@ public interface Constants {
     String BRAND = "brand";
     String SAMSUNG = "Samsung";
     String LIMIT = "limit";
+    String UPDATE_LIMITED="updateLimited";
     String DEVICE="device";
     String DETAILS_DATA = "detailsData";
     String MyPREFERENCES="MyPREFERENCES";
