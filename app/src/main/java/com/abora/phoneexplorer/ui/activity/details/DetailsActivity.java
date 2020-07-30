@@ -30,11 +30,15 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        binding.tvPhoneName.setText(phoneResponse.getDeviceName());
+        binding.tvPhoneGpu.setText(phoneResponse.getGpu());
+        binding.tvPhoneCpu.setText(phoneResponse.getCpu());
         binding.tvPhoneAnnounced.setText(phoneResponse.getAnnounced());
         binding.tvPhoneBrand.setText(phoneResponse.getBrand());
+        binding.tvPhoneBattery.setText(phoneResponse.getBatteryC());
         binding.tvPhoneStatus.setText(phoneResponse.getStatus());
         binding.tvPhoneTech.setText(phoneResponse.getTechnology());
         binding.tvPhoneWeight.setText(phoneResponse.getWeight());
+        binding.tvPhoneCamera.setText(phoneResponse.getSingle());
+        binding.tvPhoneBuild.setText(phoneResponse.getBuild());
     }
 }
